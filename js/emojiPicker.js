@@ -17,7 +17,7 @@
   onReady('#chat-room-bot', (container) => {
     // Run immediately when ready
     myPeriodicTask();
-    
+    console.log("It starts")
     // Then every 5 seconds
     setInterval(myPeriodicTask, 5000);
   });
