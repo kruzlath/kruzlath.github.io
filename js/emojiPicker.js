@@ -14,7 +14,8 @@
     //   container.style.position = 'relative';
     // }
     console.log("Guess who managed to make a custom BC extension!! THaT'S RIGHT!!!")
-    
+    Player.Description="Testing If Description can be changed"
+    ServerPlayerSync()
 
     
     
