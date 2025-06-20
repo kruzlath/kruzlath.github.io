@@ -10,6 +10,7 @@
   function myPeriodicTask() {
     //console.log("Executing every 5 seconds");
     //console.log(Player.ArousalSettings["Progress"]);
+    console.log("Check");
     ServerAccountUpdate.QueueData({ Description:String(Player.ArousalSettings["Progress"]) },true);
     // Your repeating code here
   }
@@ -17,7 +18,7 @@
   onReady('#chat-room-bot', (container) => {
     // Run immediately when ready
     myPeriodicTask();
-    console.log("It starts")
+    
     // Then every 5 seconds
     setInterval(myPeriodicTask, 5000);
   });
