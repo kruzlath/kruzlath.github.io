@@ -67,7 +67,7 @@
       table_of_contents.push(5);
     }
     shuffle(table_of_contents);
-    description+=", which is my rightful place in this world. \n\nTable Of Contents:"//\n1. Likes/Dislikes\n2. Important stuff to remember\n3. Greater Backstory\n4. Random facts\n";
+    description+=", which is my rightful place in this world. \n\nTable Of Contents:";//\n1. Likes/Dislikes\n2. Important stuff to remember\n3. Greater Backstory\n4. Random facts\n";
     for (i=0;i<table_of_contents.length;i++){
       description+="\n"+String(i+1)+". ";
       if (table_of_contents[i]==1){
