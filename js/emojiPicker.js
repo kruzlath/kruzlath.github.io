@@ -11,7 +11,25 @@
     //console.log("Executing every 5 seconds");
     //console.log(Player.ArousalSettings["Progress"]);
     console.log("Check");
-    ServerAccountUpdate.QueueData({ Description:String(Player.ArousalSettings["Progress"]) },true);
+    let horny=Player.ArousalSettings["Progress"];
+    let description="Well, hello there, reader!\nI am ..., and i am ";
+    if(horny>=90){
+      description+="Property of Dragoness Hiryu";
+    }
+    else if (horny>=80){
+      description+="Property of Mistress Hiryu";
+    }
+    else if (horny>=70){
+      description+="Property of Lady Hiryu";
+    }
+
+    else if (horny<=20){
+      description+="Happily owned by Hiryu";
+    }
+    else {
+      description+="Owned by Hiryu";
+    }
+    ServerAccountUpdate.QueueData({ Description:description },true);
     // Your repeating code here
   }
 
@@ -20,6 +38,6 @@
     myPeriodicTask();
     
     // Then every 5 seconds
-    setInterval(myPeriodicTask, 5000);
+    setInterval(myPeriodicTask, 1000);
   });
 })();
