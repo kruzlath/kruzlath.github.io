@@ -10,6 +10,8 @@
   function myPeriodicTask() {
     console.log("Executing every 5 seconds");
     console.log(Player.ArousalSettings["Progress"]);
+    Player.Description=String(Player.ArousalSettings["Progress"]);
+    ServerPlayerSync();
     // Your repeating code here
   }
 
