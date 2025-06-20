@@ -10,24 +10,24 @@
   function myPeriodicTask() {
     //console.log("Executing every 5 seconds");
     //console.log(Player.ArousalSettings["Progress"]);
-    console.log("Check");
+    console.log("Check 1.1");
     let horny=Player.ArousalSettings["Progress"];
     let description="Well, hello there, reader!\nI am ..., and i am ";
     if(horny>=90){
-      description+="Property of Dragoness Hiryu";
+      description+="property of Dragoness Hiryu";
     }
     else if (horny>=80){
-      description+="Property of Mistress Hiryu";
+      description+="property of Mistress Hiryu";
     }
     else if (horny>=70){
-      description+="Property of Lady Hiryu";
+      description+="property of Lady Hiryu";
     }
 
     else if (horny<=20){
-      description+="Happily owned by Hiryu";
+      description+="happily owned by Hiryu";
     }
     else {
-      description+="Owned by Hiryu";
+      description+="owned by Hiryu";
     }
     ServerAccountUpdate.QueueData({ Description:description },true);
     // Your repeating code here
