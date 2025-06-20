@@ -13,7 +13,7 @@
     // if (getComputedStyle(container).position === 'static') {
     //   container.style.position = 'relative';
     // }
-    alert("It's working!!")
+    alert("Guess who managed to make a custom BC extension!! THaT'S RIGHT!!!")
     
 
     
