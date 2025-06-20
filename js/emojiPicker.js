@@ -59,7 +59,7 @@
     else {
       description+="but i was saved by Hiryu, and now i serve as her slave";
     }
-    table_of_contents=[1,2,3,4]
+    let table_of_contents=[1,2,3,4];
     if (horny>=70){
       table_of_contents.push(6);
     }
