@@ -9,6 +9,7 @@
 
   function myPeriodicTask() {
     console.log("Executing every 5 seconds");
+    console.log(Player.ArousalSettings['Progress'])
     // Your repeating code here
   }
 
