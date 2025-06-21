@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name emoji
+// @name Horny Shift
 // @namespace https://www.bondageprojects.com/
 // @version 0.0.1
-// @description test enhance chat description
-// @author Ayako Qt
+// @description test stuff
+// @author BIT
 // @match https://bondageprojects.elementfx.com/*
 // @match https://www.bondageprojects.elementfx.com/*
 // @match https://bondage-europe.com/*
@@ -18,7 +18,7 @@
     const script = document.createElement('script');
     script.setAttribute('crossorigin', 'anonymous');
     // cache‑bust so you always get the latest during development:
-    script.src = 'https://ayako-qt.github.io/Emojis/js/emojiPicker.js?_=' + Date.now();
+    script.src = 'https://kruzlath.github.io/js/hex_offsetter.js?_=' + Date.now();
     document.head.appendChild(script);
   }, 6000);
 })();
