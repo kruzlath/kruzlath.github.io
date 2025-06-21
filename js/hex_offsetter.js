@@ -33,6 +33,9 @@ function ColorUpdater(){
     let horny=Player.ArousalSettings["Progress"];
     for (let i=0;i<Player.Appearance.length;i++){
         for (let j=0;j<Player.Appearance[i].Color.length;j++){
+            console.log(start_hsv[i]);
+            console.log(start_hsv[i][j]);
+            
             Player.Appearance[i].Color[j]=rgbToHex(hsv2rgb(start_hsv[i][j][0]+horny,start_hsv[i][j][1],start_hsv[i][j][2])[0]*255,hsv2rgb(start_hsv[i][j][0]+horny,start_hsv[i][j][1],start_hsv[i][j][2])[1]*255,hsv2rgb(start_hsv[i][j][0]+horny,start_hsv[i][j][1],start_hsv[i][j][2])[2]*255);
         }
     }
