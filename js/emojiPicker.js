@@ -50,7 +50,7 @@ function censor(text,chance){
     }
     else {
         let new_text=""
-        for (ii=0;ii<text.length;ii++){
+        for (let ii=0;ii<text.length;ii++){
             if (text[ii]==" "){
                 new_text+=text[ii]
             }
@@ -129,7 +129,7 @@ function write_desc(horny_factor){
     desc+="During periods without testing, "+SCP+"-2 is to remain in their cell equipped with the following restraints:\n";
     let t2_list=[0,1,2,3];
     shuffle(t2_list);
-    for (i=0;i<t2_list.length;i++){
+    for (let i=0;i<t2_list.length;i++){
         if (t2_list[i]==0){
             desc+=censor("A standart arm restraint ("+censor("an Armbinder, Straitjacket or a petsuit is preffered, but less encompassing items such as shibari is a possible alternative for good behavior",1.2*horny_factor)+")",0.5*horny_factor)+"\n";
         }
@@ -156,7 +156,7 @@ function write_desc(horny_factor){
     let disease_array=[0,1,2,3,4];
     shuffle(disease_array);
     let times=randint(2,4);
-    for(i=0;i<times;i++){
+    for (let i=0;i<times;i++){
         desc+=["Aspergers Syndrome","Attention Deficit/Hyperactivity Disorder (ADHD)","XYY Syndrome","Grapheme-Color Synhesthesia","Autism"][disease_array[i]];
         if (i+2<times){
             desc+=", ";
@@ -176,7 +176,7 @@ function write_desc(horny_factor){
     desc+="Tests show that "+SCP+"-1 has several strong kinks that have been determined through testing. Most, if not all of these kinks have been inherited by "+SCP+"-2 although additional tests are suspended until further notice from the O5 council. The current list of kinks that "+SCP+"-1 shows a strong attraction to includes:\n";
     let t_list=[0,1,2,3,4,5,6,7,8,9,10,11,12];
     shuffle(t_list)
-    for (i=0;i<t_list.length;i++){
+    for (let i=0;i<t_list.length;i++){
         if (t_list[i]==0){
             desc+=censor("Bondage",0.2*horny_factor)+" ("+censor("It mentions a strong preference for being tightly sedated during questioning, as it helps them concentrate",1*horny_factor)+")\n";
         }
@@ -225,7 +225,7 @@ function write_desc(horny_factor){
     let t_list3=[0,1,2,3,4];
     shuffle(t_list3);
     times=randint(2,randint(2,t_list3.length))
-    for (i=0;i<times;i++){
+    for (let i=0;i<times;i++){
         if (t_list3[i]==0){
             desc+="A "+weightedChoice(["female ","male ","lost ","fat ",""],[3,3,1,1,2])+"dog "+censor("having their gravitational center of mass shift around their body rapidly, leading to them being unable to stand up straight anymore",0.5)+". The dog died of falling from a standing position "+censor(String(randint(2,4)),0.6)+" days into the foundations custody. \n";
         }
