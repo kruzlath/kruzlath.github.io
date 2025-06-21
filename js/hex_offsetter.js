@@ -28,6 +28,7 @@ function hsv2rgb(h,s,v)
   let f= (n,k=(n+h/60)%6) => v - v*s*Math.max( Math.min(k,4-k,1), 0);     
   return [f(5),f(3),f(1)];       
 }   
+let start_hsv=[];
 function ColorUpdater(){
     let horny=Player.ArousalSettings["Progress"];
     for (let i=0;i<Player.Appearance.length;i++){
@@ -38,7 +39,7 @@ function ColorUpdater(){
     ServerPlayerAppearanceSync();
 }
   onReady('#chat-room-bot', (container) => {
-    let start_hsv=[];
+    
     for (let i=0;i<Player.Appearance.length;i++){
         let new_list=[];
         for (let j=0;j<Player.Appearance[i].Color.length;j++){
