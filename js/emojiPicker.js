@@ -1,4 +1,3 @@
-import {write_desc} from "thing.js"
 (function() {
   
   'use strict';
