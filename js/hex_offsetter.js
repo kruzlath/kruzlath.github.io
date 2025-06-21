@@ -48,8 +48,9 @@ function ColorUpdater(){
             //console.log(Player.Appearance[i].Color[j]);
             //console.log(hexToRgb(Player.Appearance[i].Color[j]));
             let rgb=hexToRgb(Player.Appearance[i].Color[j]);
-            //console.log(rgb);
+            console.log(rgb);
             let new_hsv=rgb2hsv(rgb.r,rgb.g,rgb.b);
+            console.log(new_hsv);
             new_list.push(new_hsv);
         }
       start_hsv.push(new_list);
