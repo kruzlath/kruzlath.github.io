@@ -1,5 +1,4 @@
 (function() {
-  
   'use strict';
   
   function onReady(selector, fn) {
