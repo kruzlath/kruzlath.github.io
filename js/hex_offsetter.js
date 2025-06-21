@@ -34,7 +34,7 @@ function ColorUpdater(){
     for (let i=0;i<Player.Appearance.length;i++){
          if (Player.Appearance[i].Color.length>0){
         for (let j=0;j<Player.Appearance[i].Color.length;j++){
-            if (Player.Appearance[i].Color[j]!="Default"){
+            if (Player.Appearance[i].Color[j][0]=="#"){
             let new_rgb=hsv2rgb(start_hsv[i][j][0]+horny,start_hsv[i][j][1],start_hsv[i][j][2]);
             Player.Appearance[i].Color[j]=rgbToHex(new_rgb[0],new_rgb[1],new_rgb[2]);
         }
@@ -51,7 +51,7 @@ function ColorUpdater(){
             for (let j=0;j<Player.Appearance[i].Color.length;j++){
                 //console.log(Player.Appearance[i].Color[j]);
                 //console.log(hexToRgb(Player.Appearance[i].Color[j]));
-                if (Player.Appearance[i].Color[j]!="Default"){
+                if (Player.Appearance[i].Color[j][0]=="#"){
                 let rgb=hexToRgb(Player.Appearance[i].Color[j]);
                 console.log(rgb);
                 let new_hsv=rgb2hsv(rgb.r,rgb.g,rgb.b);
