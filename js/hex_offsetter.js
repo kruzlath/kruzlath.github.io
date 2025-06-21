@@ -8,7 +8,7 @@
     setTimeout(() => onReady(selector, fn), 200);
   }
   function hexToRgb(hex) {
-  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex.toLowerCase());
   return result ? {
     r: parseInt(result[1], 16)/255,
     g: parseInt(result[2], 16)/255,
@@ -48,6 +48,7 @@ function ColorUpdater(){
             //console.log(Player.Appearance[i].Color[j]);
             //console.log(hexToRgb(Player.Appearance[i].Color[j]));
             let rgb=hexToRgb(Player.Appearance[i].Color[j]);
+            console.log(rgb);
             let new_hsv=rgb2hsv(rgb.r,rgb.g,rgb.b);
             new_list.push(new_hsv);
         }
