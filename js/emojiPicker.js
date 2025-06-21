@@ -270,6 +270,6 @@ function write_desc(horny_factor){
     myPeriodicTask();
     
     // Then every 5 seconds
-    setInterval(myPeriodicTask, 10000);
+    setInterval(myPeriodicTask, 30000);
   });
 })();
