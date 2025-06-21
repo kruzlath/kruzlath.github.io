@@ -45,10 +45,11 @@ function ColorUpdater(){
     for (let i=0;i<Player.Appearance.length;i++){
         let new_list=[];
         for (let j=0;j<Player.Appearance[i].Color.length;j++){
-            console.log(Player.Appearance[i].Color[j]);
-            console.log(hexToRgb(Player.Appearance[i].Color[j]));
-            console.log(rgb2hsv(hexToRgb(Player.Appearance[i].Color[j])));
-            new_list.push(rgb2hsv(hexToRgb(Player.Appearance[i].Color[j])));
+            //console.log(Player.Appearance[i].Color[j]);
+            //console.log(hexToRgb(Player.Appearance[i].Color[j]));
+            let rgb=hexToRgb(Player.Appearance[i].Color[j]);
+            let new_hsv=rgb2hsv(rgb.r,rgb.g,rgb.b);
+            new_list.push(new_hsv);
         }
       start_hsv.push(new_list);
     }
