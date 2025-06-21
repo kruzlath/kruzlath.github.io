@@ -29,8 +29,10 @@ function hsv2rgb(h,s,v)
   return [f(5),f(3),f(1)];       
 }   
 let start_hsv=[];
+//const character_id='uI54mMFAPY1S39mHAVw5';
+//let my_character=[];
 function ColorUpdater(){
-    let horny=Player.ArousalSettings["Progress"];
+    let horny=Player.ArousalSettings["Progress"]*1.8;
     for (let i=0;i<Player.Appearance.length;i++){
          if (Player.Appearance[i].Color.length>0){
         for (let j=0;j<Player.Appearance[i].Color.length;j++){
@@ -41,10 +43,11 @@ function ColorUpdater(){
     }
     }
     }
-    ServerPlayerAppearanceSync();
+    ChatRoomCharacterUpdate(Player);
 }
   onReady('#chat-room-bot', (container) => {
-    
+    //var name = "Nyx";
+    //my_character.push(Character.find(c => c.Name === name)); 
     for (let i=0;i<Player.Appearance.length;i++){
         let new_list=[];
         if (Player.Appearance[i].Color.length>0){
@@ -66,6 +69,6 @@ function ColorUpdater(){
       start_hsv.push(new_list);
     }
     console.log("YEP");
-    setInterval(ColorUpdater, 2000);
+    setInterval(ColorUpdater, 1000);
   });
 })();
