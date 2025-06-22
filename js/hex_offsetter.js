@@ -33,14 +33,16 @@ let start_hsv=[];
 //let my_character=[];
 let my_time=0;
 function ColorUpdater(){
-    let horny=Player.ArousalSettings["Progress"]*1.8+my_time;
+    let horny=Player.ArousalSettings["Progress"]*1.8;
     my_time+=10;
+    let counter=0;
     if (my_time>360) my_time-=360;
     for (let i=0;i<Player.Appearance.length;i++){
          if (Player.Appearance[i].Color.length>0){
         for (let j=0;j<Player.Appearance[i].Color.length;j++){
             if (start_hsv[i][j].length==3){
-            let new_rgb=hsv2rgb(start_hsv[i][j][0]+horny,start_hsv[i][j][1],start_hsv[i][j][2]);
+              coutner+=1
+            let new_rgb=hsv2rgb(start_hsv[i][j][0]+my_time*(counter/10+1),start_hsv[i][j][1],start_hsv[i][j][2]);
             Player.Appearance[i].Color[j]=rgbToHex(new_rgb[0],new_rgb[1],new_rgb[2]);
         }
     }
