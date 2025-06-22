@@ -31,8 +31,11 @@ function hsv2rgb(h,s,v)
 let start_hsv=[];
 //const character_id='uI54mMFAPY1S39mHAVw5';
 //let my_character=[];
+let my_time=0;
 function ColorUpdater(){
-    let horny=Player.ArousalSettings["Progress"]*1.8;
+    let horny=Player.ArousalSettings["Progress"]*1.8+my_time;
+    my_time+=10;
+    if (my_time>360) my_time-=360;
     for (let i=0;i<Player.Appearance.length;i++){
          if (Player.Appearance[i].Color.length>0){
         for (let j=0;j<Player.Appearance[i].Color.length;j++){
