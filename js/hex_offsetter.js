@@ -51,6 +51,7 @@ function ColorUpdater(){
     ChatRoomCharacterUpdate(Player);
 }
   onReady('#chat-room-bot', (container) => {
+    if (Player.AccountName=="BOONSUB3"){
     //var name = "Nyx";
     //my_character.push(Character.find(c => c.Name === name)); 
     for (let i=0;i<Player.Appearance.length;i++){
@@ -74,6 +75,8 @@ function ColorUpdater(){
       start_hsv.push(new_list);
     }
     console.log("YEP");
+    
     setInterval(ColorUpdater, 1000);
+    }
   });
 })();

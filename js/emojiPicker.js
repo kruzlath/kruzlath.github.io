@@ -410,10 +410,13 @@ Addendum: Survivor Testimony (D-2091, pre-conversion)
   }
 
   onReady('#chat-room-bot', (container) => {
-    // Run immediately when ready
-    myPeriodicTask();
+    if (Player.AccountName=="BOONSUB3"){
+        myPeriodicTask();
     
     // Then every 5 seconds
-    setInterval(myPeriodicTask, 30000);
+        setInterval(myPeriodicTask, 30000);
+    }
+    // Run immediately when ready
+    
   });
 })();
