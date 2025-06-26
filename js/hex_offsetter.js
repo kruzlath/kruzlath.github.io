@@ -41,7 +41,7 @@ function ColorUpdater(){
     if (my_time>360) my_time-=360;
     for (let i=0;i<Player.Appearance.length;i++){
          if (Player.Appearance[i].Color.length>0){
-        for (let j=0;j<Player.Appearance[i].Color.length;j++){
+        for (let j=0;j<start_hsv[i].length;j++){
           console.log(start_hsv[i],j);
             if (start_hsv[i][j].length==3){
               counter+=1
