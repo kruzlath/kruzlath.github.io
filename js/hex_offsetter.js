@@ -87,7 +87,7 @@ function ColorUpdater(){
     
     console.log("YEP");
     
-    setInterval(ColorUpdater, 1000);
+    setInterval(ColorUpdater, 3000);
     }
   });
 })();
