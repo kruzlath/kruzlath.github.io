@@ -53,6 +53,7 @@ function ColorUpdater(){
     ChatRoomCharacterUpdate(Player);
 }
   function load_char_color(){
+    start_hsv=[];
     for (let i=0;i<Player.Appearance.length;i++){
         let new_list=[];
         if (Player.Appearance[i].Color.length>0){
