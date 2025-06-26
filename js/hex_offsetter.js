@@ -63,6 +63,9 @@ function ColorUpdater(){
                 //console.log(hexToRgb(Player.Appearance[i].Color[j]));
                 if (Player.Appearance[i].Color[j][0]=="#"){
                 let rgb=hexToRgb(Player.Appearance[i].Color[j]);
+                if (rgb==null){
+                  rgb={r:0,g:0,b:0};
+                }
                 console.log(rgb);
                 let new_hsv=rgb2hsv(rgb.r,rgb.g,rgb.b);
                 console.log(new_hsv);
