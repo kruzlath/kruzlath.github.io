@@ -42,6 +42,7 @@ function ColorUpdater(){
     for (let i=0;i<Player.Appearance.length;i++){
          if (Player.Appearance[i].Color.length>0){
         for (let j=0;j<Player.Appearance[i].Color.length;j++){
+          console.log(start_hsv[i],j);
             if (start_hsv[i][j].length==3){
               counter+=1
             let new_rgb=hsv2rgb(start_hsv[i][j][0]+my_time*(counter/10+1),start_hsv[i][j][1],start_hsv[i][j][2]);
