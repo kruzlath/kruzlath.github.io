@@ -1,5 +1,4 @@
 (function() {
-  'use strict';
 
   // a simple await，until #chat-room-bot loaded
   function onReady(selector, fn) {
@@ -34,7 +33,10 @@ let start_hsv=[];
 let my_time=0;
 function ColorUpdater(){
     let horny=Player.ArousalSettings["Progress"]*1.8;
-    my_time+=10;
+    my_time+=1;
+    if (Player.Appearance.length!=start_hsv.length){
+      load_char_color();
+    }
     let counter=0;
     if (my_time>360) my_time-=360;
     for (let i=0;i<Player.Appearance.length;i++){
@@ -50,10 +52,7 @@ function ColorUpdater(){
     }
     ChatRoomCharacterUpdate(Player);
 }
-  onReady('#chat-room-bot', (container) => {
-    if (Player.AccountName=="BOONSUB3"){
-    //var name = "Nyx";
-    //my_character.push(Character.find(c => c.Name === name)); 
+  function load_char_color(){
     for (let i=0;i<Player.Appearance.length;i++){
         let new_list=[];
         if (Player.Appearance[i].Color.length>0){
@@ -74,6 +73,13 @@ function ColorUpdater(){
     }
       start_hsv.push(new_list);
     }
+  }
+  onReady('#chat-room-bot', (container) => {
+    if (Player.AccountName=="BOONSUB3"){
+      load_char_color();
+    //var name = "Nyx";
+    //my_character.push(Character.find(c => c.Name === name)); 
+    
     console.log("YEP");
     
     setInterval(ColorUpdater, 1000);

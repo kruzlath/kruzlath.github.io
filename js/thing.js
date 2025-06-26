@@ -324,7 +324,7 @@ function write_desc(horny_factor){
     }
 }
     else {
-        let document=0
+        let document=randint(0,1)
         if (document==0){
             desc=`INCIDENT LOG 64902-ALPHA (Initial Containment)
 Date: [REDACTED]
@@ -391,6 +391,40 @@ O5 Directive:
 
 Addendum: Survivor Testimony (D-2091, pre-conversion)
 "It wasn’t attacking us. It was gardening us. The vines pinned me down, and it just… patted my cheek. Said something old. Then the pain started, but I couldn’t scream. By the end, I wanted to be roots."`
+        }
+        else if (document==1){
+            desc=`Document #64902-Delta (Revised Recovery Log)
+Subject: Initial Containment of SCP-64902
+Location: ██████ City Sewer System, Sector-7
+Date: ██/██/20██
+Team Involved: MTF Zeta-19 ("Garden Shears")
+
+Incident Overview
+At approximately 03:17 AM, reports surfaced of missing maintenance workers in ██████ City’s underground drainage network. Local authorities dismissed claims of "moving vines" as drug-induced hallucinations until CCTV footage revealed humanoid figures with green skin dragging unconscious civilians into overflow tunnels. Foundation satellites detected abnormal chlorophyll concentrations in the area, prompting MTF Zeta-19 deployment.
+
+Operational Log (Abridged)
+03:42 AM: Team enters via maintenance hatch B-12. Sewers exhibit unnatural overgrowth—rusted pipes burst with flowering vines, and standing water is clogged with lily pads. Thermal scans detect a heat signature (designated HVT-64902) 200m northeast.
+
+03:51 AM: First contact with SCP-64902-2 instances (5 total). Instances are naked, covered in algae, and chanting "The roots drink well here" while shoveling sewage into their mouths. Agent Rook attempts interrogation; an instance vomits a live koi fish onto his boots. (Note: Fish later confiscated for testing. No anomalies detected—just confused.)
+
+03:58 AM: HVT-64902 located in a collapsed storm chamber, now resembling a jungle grotto. SCP-64902 is perched atop a mangled water valve, weaving vines into a hammock. Upon spotting agents, it yawns and gestures lazily.
+
+04:00 AM: Engagement Begins
+SCP-64902’s skin flashes crimson. Sewer walls erupt with SCP-64902-1 vines, snaring Agent Birch and Agent Spade.
+Agent Axe deploys defoliant sprayers, causing vines to retract with a high-pitched screeching noise (later confirmed to be the vines, not Agent Spade).
+SCP-64902 leaps into a waist-deep sludge channel, where it submerges for 22 seconds before resurfacing behind the team. Agent Rook tases it—no effect. ("Like shocking a tree. A really pissed-off tree.")
+Agent Thorn fires an incendiary round into the ceiling, igniting methane pockets. The explosion collapses a tunnel, temporarily burying SCP-64902 under rubble.
+
+04:07 AM: Containment Achieved
+
+SCP-64902 enters dormant state after being pinned under a fallen concrete slab.
+Team extracts it using a hydraulic lift, noting it now resembles a "very ugly bonsai."
+Surviving SCP-64902-2 instances play dead when flashlights hit them. One whispers "I am a rock" before being sedated.
+
+Aftermath & Statistics
+Casualties: 2 agents hospitalized (vine lacerations, 1 case of fungal rash in an embarrassing location).
+SCP-64902-2 Neutralized: 3 (burned), 2 captured (later reclassified as D-Class gardeners).
+Structural Damage: $█████ in repairs; city officials told a "feral alligator" was responsible.`
         }
     }
     
