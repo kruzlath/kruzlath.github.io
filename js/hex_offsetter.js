@@ -45,7 +45,7 @@ function ColorUpdater(){
           console.log(start_hsv[i],j);
             if (start_hsv[i][j].length==3){
               counter+=1
-            let new_rgb=hsv2rgb(start_hsv[i][j][0]+my_time*(counter/10+1),start_hsv[i][j][1],start_hsv[i][j][2]);
+            let new_rgb=hsv2rgb(start_hsv[i][j][0]+horny,start_hsv[i][j][1],start_hsv[i][j][2]);
             Player.Appearance[i].Color[j]=rgbToHex(new_rgb[0],new_rgb[1],new_rgb[2]);
         }
     }
