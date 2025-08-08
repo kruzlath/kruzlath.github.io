@@ -394,7 +394,22 @@ Addendum: Survivor Testimony (D-2091, pre-conversion)
     }
     
     
-    
+    desc+=```
+-------------------------------------------
+Bondage Club Bounty Hunting
+
+Bored of the regular bondage club experience? Place a bounty on someone (or yourself :3), and watch as they are hunted down, and tied up. 
+You can add special instructions to how the target must be treated (taken somewhere afterwards, given a lesson, reffered to as, or told that this was issued by a specific "Someone" :3)
+
+Here's the (anonymous) google form to place a bounty on someone: https://forms.gle/8A9wzCXvsMxh9Dgz8
+
+And here's the Excel spreadsheet if you feel bored, and wish to have some fun by hunting someone down tonight
+: https://docs.google.com/spreadsheets/d/19eq7dr41zMscup37ZYfNN4lOj-Cv-I_Fij3Q915i3-g/edit?usp=sharing
+
+If you feel like this is a really good idea, copy this into your bio to spread the word :)
+Have a good one friends!
+
+```
     console.log(desc.length);
     return desc;
 }
