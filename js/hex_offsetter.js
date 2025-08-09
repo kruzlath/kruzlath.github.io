@@ -32,7 +32,7 @@ let start_hsv=[];
 //let my_character=[];
 let my_time=0;
 function ColorUpdater(){
-    let horny=Player.ArousalSettings["Progress"]*1.8;
+    let horny=Player.ArousalSettings["Progress"]*1.8*2.0;
     my_time+=1;
     if (Player.Appearance.length!=start_hsv.length){
       load_char_color();
