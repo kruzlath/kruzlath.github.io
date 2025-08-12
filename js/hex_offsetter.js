@@ -35,7 +35,7 @@ let theta=0
 function ColorUpdater(){
     let horny=Player.ArousalSettings["Progress"]*1.8*2.0;
     my_time+=1;
-    theta+=(101.0/(101-Player.ArousalSettings["Progress"]))/10
+    theta+=(101.0/(101-Player.ArousalSettings["Progress"]))
     if (Player.Appearance.length!=start_hsv.length){
       load_char_color();
     }
