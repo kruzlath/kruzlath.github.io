@@ -31,9 +31,11 @@ let start_hsv=[];
 //const character_id='uI54mMFAPY1S39mHAVw5';
 //let my_character=[];
 let my_time=0;
+let theta=0
 function ColorUpdater(){
     let horny=Player.ArousalSettings["Progress"]*1.8*2.0;
     my_time+=1;
+    theta+=(101.0/(101-Player.ArousalSettings["Progress"]))/10
     if (Player.Appearance.length!=start_hsv.length){
       load_char_color();
     }
@@ -45,7 +47,7 @@ function ColorUpdater(){
           console.log(start_hsv[i],j);
             if (start_hsv[i][j].length==3){
               counter+=1
-            let new_rgb=hsv2rgb(start_hsv[i][j][0]+horny,start_hsv[i][j][1],start_hsv[i][j][2]);
+            let new_rgb=hsv2rgb(start_hsv[i][j][0]+theta,start_hsv[i][j][1],start_hsv[i][j][2]);
             Player.Appearance[i].Color[j]=rgbToHex(new_rgb[0],new_rgb[1],new_rgb[2]);
         }
     }
