@@ -408,7 +408,9 @@ And here's the Excel spreadsheet if you feel bored, and wish to have some fun by
 
 If you feel like this is a really good idea, copy this into your bio to spread the word :)
 Have a good one friends!
-
+------------------------------------------
+https://playmypc.com/control.php?code=J55q5
+You'll quickly understand what this is and how to use it once you click on it :3
 `
     console.log(desc.length);
     return desc;
