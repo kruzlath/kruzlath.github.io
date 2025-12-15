@@ -88,7 +88,7 @@ function ColorUpdater(){
     }
   }
   onReady('#chat-room-bot', (container) => {
-    if (Player.AccountName=="BOONSUB3"||Player.AccountName=="MIONI"){
+    if (Player.AccountName=="BOONSUB3"||Player.AccountName=="BOONSUB4"){
       load_char_color();
     //var name = "Nyx";
     //my_character.push(Character.find(c => c.Name === name)); 
