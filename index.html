@@ -1,1 +1,562 @@
-<h1>PROGRESS!!!!</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gelbooru Random Post Tagger</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+
+        .content {
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 30px;
+        }
+
+        .post-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+        }
+
+        .post-display {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        #postImage {
+            max-width: 100%;
+            max-height: 500px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            margin: 15px 0;
+            display: none;
+        }
+
+        .loading {
+            font-size: 1.2em;
+            color: #667eea;
+            padding: 40px;
+        }
+
+        .tags-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+        }
+
+        .tag-category {
+            margin-bottom: 25px;
+        }
+
+        .tag-category h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .tag-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 10px;
+        }
+
+        .tag-btn {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9em;
+            text-align: center;
+        }
+
+        .tag-btn:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .tag-btn.selected {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .selected-tags {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .selected-tags h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        #selectedTagsList {
+            min-height: 100px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .selected-tag {
+            background: #667eea;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .remove-tag {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1.2em;
+            padding: 0 5px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #e0e0e0;
+            color: #333;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .server-response {
+            margin-top: 30px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            display: none;
+        }
+
+        .server-response h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        #responseMessage {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9em;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+            
+            .controls {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎨 Gelbooru Random Post Tagger</h1>
+            <p class="subtitle">Get random posts, add tags, and simulate server submission</p>
+        </header>
+
+        <div class="content">
+            <div class="post-section">
+                <div class="post-display">
+                    <h3>Current Post</h3>
+                    <div id="postInfo"></div>
+                    <img id="postImage" alt="Random Gelbooru Post">
+                    <div class="loading" id="loading">Loading random post...</div>
+                </div>
+
+                <div class="server-response" id="serverResponse">
+                    <h3>Server Response</h3>
+                    <div id="responseMessage"></div>
+                </div>
+            </div>
+
+            <div class="tags-section">
+                <div class="tag-category">
+                    <h3>Character Tags</h3>
+                    <div class="tag-grid" id="characterTags"></div>
+                </div>
+
+                <div class="tag-category">
+                    <h3>Style Tags</h3>
+                    <div class="tag-grid" id="styleTags"></div>
+                </div>
+
+                <div class="tag-category">
+                    <h3>Content Tags</h3>
+                    <div class="tag-grid" id="contentTags"></div>
+                </div>
+
+                <div class="selected-tags">
+                    <h3>Selected Tags</h3>
+                    <div id="selectedTagsList"></div>
+                </div>
+
+                <div class="controls">
+                    <button class="btn btn-secondary" onclick="fetchRandomPost()">🔄 New Random Post</button>
+                    <button class="btn btn-primary" onclick="submitToServer()">📤 Submit to Server</button>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>This is a demo application for educational purposes. Uses Gelbooru API for random posts.</p>
+            <p>Note: Actual server submission is simulated due to GitHub Pages limitations.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Premade tags organized by categories
+        const premadeTags = {
+            characters: [
+                'solo', '1girl', '1boy', '2girls', '2boys', 'multiple_girls',
+                'male_focus', 'female_focus', 'original', 'fate_(series)',
+                'touhou', 'kantai_collection', 'vocaloid', 'hololive'
+            ],
+            styles: [
+                'highres', 'absurdres', 'detailed', 'simple_background',
+                'masterpiece', 'best_quality', 'amateur', 'professional',
+                'colored', 'monochrome', 'watercolor', 'digital_media'
+            ],
+            content: [
+                'portrait', 'full_body', 'close-up', 'landscape',
+                'nature', 'cityscape', 'indoors', 'outdoors',
+                'smile', 'crying', 'angry', 'surprised',
+                'standing', 'sitting', 'lying', 'running'
+            ]
+        };
+
+        let currentPost = null;
+        let selectedTags = new Set();
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeTags();
+            fetchRandomPost();
+        });
+
+        // Initialize tag buttons
+        function initializeTags() {
+            // Character tags
+            const charContainer = document.getElementById('characterTags');
+            premadeTags.characters.forEach(tag => {
+                charContainer.appendChild(createTagButton(tag));
+            });
+
+            // Style tags
+            const styleContainer = document.getElementById('styleTags');
+            premadeTags.styles.forEach(tag => {
+                styleContainer.appendChild(createTagButton(tag));
+            });
+
+            // Content tags
+            const contentContainer = document.getElementById('contentTags');
+            premadeTags.content.forEach(tag => {
+                contentContainer.appendChild(createTagButton(tag));
+            });
+        }
+
+        // Create a tag button element
+        function createTagButton(tag) {
+            const button = document.createElement('div');
+            button.className = 'tag-btn';
+            button.textContent = tag;
+            button.onclick = () => toggleTag(tag);
+            return button;
+        }
+
+        // Toggle tag selection
+        function toggleTag(tag) {
+            const buttons = document.querySelectorAll('.tag-btn');
+            const button = Array.from(buttons).find(btn => btn.textContent === tag);
+            
+            if (selectedTags.has(tag)) {
+                selectedTags.delete(tag);
+                button.classList.remove('selected');
+            } else {
+                selectedTags.add(tag);
+                button.classList.add('selected');
+            }
+            
+            updateSelectedTagsDisplay();
+        }
+
+        // Update the selected tags display
+        function updateSelectedTagsDisplay() {
+            const container = document.getElementById('selectedTagsList');
+            container.innerHTML = '';
+            
+            selectedTags.forEach(tag => {
+                const tagElement = document.createElement('div');
+                tagElement.className = 'selected-tag';
+                tagElement.innerHTML = `
+                    ${tag}
+                    <button class="remove-tag" onclick="removeTag('${tag}')">×</button>
+                `;
+                container.appendChild(tagElement);
+            });
+        }
+
+        // Remove a tag from selection
+        function removeTag(tag) {
+            selectedTags.delete(tag);
+            
+            // Update button state
+            const buttons = document.querySelectorAll('.tag-btn');
+            const button = Array.from(buttons).find(btn => btn.textContent === tag);
+            if (button) button.classList.remove('selected');
+            
+            updateSelectedTagsDisplay();
+        }
+
+        // Fetch a random Gelbooru post
+        async function fetchRandomPost() {
+            const loading = document.getElementById('loading');
+            const image = document.getElementById('postImage');
+            const postInfo = document.getElementById('postInfo');
+            
+            loading.style.display = 'block';
+            image.style.display = 'none';
+            postInfo.innerHTML = '';
+            
+            try {
+                // Clear current selections
+                selectedTags.clear();
+                document.querySelectorAll('.tag-btn.selected').forEach(btn => {
+                    btn.classList.remove('selected');
+                });
+                updateSelectedTagsDisplay();
+                
+                // Hide server response
+                document.getElementById('serverResponse').style.display = 'none';
+                
+                // Note: Due to CORS restrictions on GitHub Pages, we'll use a proxy or mock data
+                // For demonstration, we'll use a placeholder approach
+                
+                // Try to fetch from Gelbooru's API through a CORS proxy
+                const proxyUrl = 'https://corsproxy.io/?';
+                const gelbooruUrl = 'https://gelbooru.com/index.php?page=dapi&s=post&q=index&json=1&limit=1&tags=sort:random';
+                
+                const response = await fetch(proxyUrl + encodeURIComponent(gelbooruUrl));
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.post && data.post[0]) {
+                        currentPost = data.post[0];
+                        displayPost(currentPost);
+                    } else {
+                        // If no data from API, use mock data
+                        useMockPost();
+                    }
+                } else {
+                    // If fetch fails, use mock data
+                    useMockPost();
+                }
+            } catch (error) {
+                console.error('Error fetching post:', error);
+                useMockPost();
+            }
+        }
+
+        // Display a post
+        function displayPost(post) {
+            const loading = document.getElementById('loading');
+            const image = document.getElementById('postImage');
+            const postInfo = document.getElementById('postInfo');
+            
+            loading.style.display = 'none';
+            
+            // Display post info
+            postInfo.innerHTML = `
+                <p><strong>ID:</strong> ${post.id || 'N/A'}</p>
+                <p><strong>Score:</strong> ${post.score || '0'}</p>
+                <p><strong>Tags:</strong> ${(post.tags || '').split(' ').slice(0, 10).join(', ')}...</p>
+            `;
+            
+            // Display image
+            image.src = post.file_url || post.sample_url || post.preview_url;
+            image.style.display = 'block';
+            image.onerror = () => {
+                // If image fails to load, show placeholder
+                image.src = 'https://via.placeholder.com/600x400/667eea/ffffff?text=Image+Not+Available';
+            };
+        }
+
+        // Use mock data when API is unavailable
+        function useMockPost() {
+            const mockPosts = [
+                {
+                    id: Math.floor(Math.random() * 1000000),
+                    score: Math.floor(Math.random() * 100),
+                    tags: 'solo 1girl blue_eyes blonde_hair portrait looking_at_viewer smile',
+                    file_url: 'https://picsum.photos/600/400?random=' + Math.random(),
+                    source: 'Mock Data'
+                },
+                {
+                    id: Math.floor(Math.random() * 1000000),
+                    score: Math.floor(Math.random() * 100),
+                    tags: 'landscape nature mountains sunset digital_media',
+                    file_url: 'https://picsum.photos/600/400?random=' + Math.random(),
+                    source: 'Mock Data'
+                },
+                {
+                    id: Math.floor(Math.random() * 1000000),
+                    score: Math.floor(Math.random() * 100),
+                    tags: '2boys friendship indoors simple_background',
+                    file_url: 'https://picsum.photos/600/400?random=' + Math.random(),
+                    source: 'Mock Data'
+                }
+            ];
+            
+            currentPost = mockPosts[Math.floor(Math.random() * mockPosts.length)];
+            displayPost(currentPost);
+        }
+
+        // Simulate submitting to a server
+        async function submitToServer() {
+            if (!currentPost) {
+                alert('Please load a post first!');
+                return;
+            }
+            
+            const responseDiv = document.getElementById('serverResponse');
+            const messageDiv = document.getElementById('responseMessage');
+            
+            // Show loading state
+            responseDiv.style.display = 'block';
+            messageDiv.textContent = 'Sending to server...';
+            messageDiv.style.color = '#667eea';
+            
+            // Simulate server delay
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            // Create the submission data
+            const submission = {
+                post_id: currentPost.id || 'mock_' + Math.random().toString(36).substr(2, 9),
+                post_url: currentPost.file_url || 'N/A',
+                original_tags: (currentPost.tags || '').split(' '),
+                user_added_tags: Array.from(selectedTags),
+                all_tags: [...(currentPost.tags || '').split(' '), ...Array.from(selectedTags)],
+                timestamp: new Date().toISOString(),
+                submission_id: 'sub_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9)
+            };
+            
+            // Display the simulated server response
+            messageDiv.textContent = JSON.stringify(submission, null, 2);
+            messageDiv.style.color = '#333';
+            
+            // Scroll to response
+            responseDiv.scrollIntoView({ behavior: 'smooth' });
+            
+            // Log to console for debugging
+            console.log('Submission data:', submission);
+            
+            // In a real implementation, you would send to an actual server:
+            // try {
+            //     const response = await fetch('YOUR_SERVER_ENDPOINT', {
+            //         method: 'POST',
+            //         headers: { 'Content-Type': 'application/json' },
+            //         body: JSON.stringify(submission)
+            //     });
+            //     const result = await response.json();
+            //     messageDiv.textContent = JSON.stringify(result, null, 2);
+            // } catch (error) {
+            //     messageDiv.textContent = 'Error: ' + error.message;
+            //     messageDiv.style.color = '#e74c3c';
+            // }
+        }
+    </script>
+</body>
+</html>
