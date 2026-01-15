@@ -1,4 +1,4 @@
-{
+const imageDatabase = {
   "https://img2.gelbooru.com/samples/04/75/sample_0475c5d644b0f2bf39c2c2dae8a7b3bf.jpg": [
     "1boy",
     "absurdres",
